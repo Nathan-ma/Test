@@ -54,7 +54,7 @@ if __name__ == "__main__":
       print('Repo at {} successfully loaded.'.format(repo_path))
       print_repository(repo)
       # create list of commits then print some of them to stdout
-      commits = list(repo.iter_commits('master'))[:COMMITS_TO_PRINT]
+      commits = list(repo.iter_commits('main'))[:COMMITS_TO_PRINT]
       for commit in commits:
           print_commit(commit)
           pass
