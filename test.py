@@ -33,7 +33,7 @@ def boo(args):
     print("Argument is True")
     repo.remotes['origin'].fetch()
     repo.git.reset('--hard')
-    repo.remtes['origin'].pull()
+    repo.remotes['origin'].pull()
     
   elif args.update == False:
     print("Argument is False")
