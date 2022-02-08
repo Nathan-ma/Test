@@ -31,9 +31,9 @@ def print_repository(repo):
 def boo(args):
   if args.update:
     print("Argument is True")
-    Repo.remotes['origin'].fetch()
-    Repo.git.reset('--hard')
-    Repo.remtes['origin'].pull()
+    repo.remotes['origin'].fetch()
+    repo.git.reset('--hard')
+    repo.remtes['origin'].pull()
     
   elif args.update == False:
     print("Argument is False")
