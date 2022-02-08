@@ -4,8 +4,12 @@ import git
 import os
 from git import Repo
 
+repo_path = '/Users/darvos/Documents/Freelancer/Toradex/repo_test'
+# Repo object used to programmatically interact with Git repositories
+repo = Repo(repo_path)
+# check that the repository loaded correctly
 
-COMMITS_TO_PRINT = 2
+COMMITS_TO_PRINT = 5
 
 def print_commit(commit):
   print('----')
@@ -25,20 +29,16 @@ def print_repository(repo):
   print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
 
 def boo(args):
-  if args.update is None:
-    print("Argument is none")
-  elif args.update == True:
+  if args.update:
     print("Argument is True")
+    Repo.remotes['origin'].fetch()
+    Repo.git.reset('--hard')
+    Repo.remtes['origin'].pull()
+    
   elif args.update == False:
     print("Argument is False")
-  else:
-    print("No Argument found")
+
     
-def bar() :
-  print("Bar")
-
-
-
 if __name__ == "__main__":
   my_parser = argparse.ArgumentParser()
   my_parser.version = '1.0'
@@ -50,10 +50,6 @@ if __name__ == "__main__":
 
   args.func(args)
   
-  repo_path = '/Users/darvos/Documents/Freelancer/Toradex/repo_test'
-  # Repo object used to programmatically interact with Git repositories
-  repo = Repo(repo_path)
-  # check that the repository loaded correctly
   if not repo.bare:
       print('Repo at {} successfully loaded.'.format(repo_path))
       print_repository(repo)
